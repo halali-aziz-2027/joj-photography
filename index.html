@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>جوج | التصوير وبطاقات المناسبات</title>
+
+<style>
+:root{
+  --pink:#c45b7c;
+  --light:#fff0f4;
+  --gold:#a77a35;
+  --dark:#553542;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Tahoma,Arial,sans-serif;
+  background:#fffaf8;
+  color:var(--dark);
+}
+
+header{
+  background:#fff;
+  padding:15px;
+  text-align:center;
+  border-bottom:2px solid #f2d5df;
+}
+
+.logo{
+  font-size:43px;
+  font-weight:bold;
+  color:var(--gold);
+}
+
+nav{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:12px;
+}
+
+button,.btn{
+  background:var(--pink);
+  color:white;
+  border:0;
+  padding:12px 18px;
+  border-radius:12px;
+  cursor:pointer;
+  font-size:15px;
+  text-decoration:none;
+}
+
+button:hover{opacity:.9}
+
+nav button{
+  font-size:13px;
+  padding:10px;
+}
+
+.hero{
+  text-align:center;
+  padding:55px 15px;
+  background:linear-gradient(135deg,#fff0f4,#f6dfcb);
+}
+
+.hero h1{
+  font-size:33px;
+  color:var(--gold);
+}
+
+.hero p{
+  font-size:18px;
+  line-height:1.9;
+}
+
+section{
+  max-width:1100px;
+  margin:auto;
+  padding:30px 15px;
+}
+
+h2{
+  text-align:center;
+  color:var(--pink);
+  margin-bottom:25px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:16px;
+}
+
+.card{
+  background:white;
+  padding:22px;
+  text-align:center;
+  border-radius:18px;
+  box-shadow:0 4px 18px #00000012;
+}
+
+.card h3{color:var(--gold)}
+
+.card .icon{
+  font-size:46px;
+  margin-bottom:12px;
+}
+
+.panel{
+  background:white;
+  border-radius:20px;
+  padding:22px;
+  box-shadow:0 4px 20px #00000012;
+  margin-bottom:20px;
+}
+
+label{
+  display:block;
+  margin:14px 0 6px;
+  font-weight:bold;
+}
+
+input,select,textarea{
+  width:100%;
+  padding:13px;
+  border:1px solid #e4cbd2;
+  border-radius:10px;
+  font-size:16px;
+  font-family:inherit;
+  background:white;
+}
+
+textarea{
+  min-height:90px;
+  resize:vertical;
+}
+
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:18px;
+}
+
+.actions button{
+  flex:1;
+  min-width:135px;
+}
+
+.preview{
+  text-align:center;
+  overflow:auto;
+}
+
+canvas{
+  max-width:100%;
+  border-radius:15px;
+  box-shadow:0 4px 15px #0002;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:15px;
+}
+
+.gallery img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:15px;
+}
+
+.chat-box{
+  height:280px;
+  overflow-y:auto;
+  border:1px solid #edd3db;
+  background:#fff8fa;
+  border-radius:12px;
+  padding:12px;
+}
+
+.message{
+  background:#f7dce5;
+  padding:10px;
+  margin:8px 0;
+  border-radius:10px;
+  overflow-wrap:anywhere;
+}
+
+.notice{
+  background:#fff1d9;
+  padding:12px;
+  border-radius:10px;
+  line-height:1.9;
+}
+
+footer{
+  background:#603c49;
+  color:white;
+  text-align:center;
+  padding:30px;
+  margin-top:35px;
+}
+
+.hidden{display:none}
+
+@media(max-width:600px){
+  .hero h1{font-size:27px}
+  section{padding:20px 12px}
+  .panel{padding:15px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">📷 جوج</div>
+  <div>مصورة جوال | JOJ PHOTOGRAPHY</div>
+
+  <nav>
+    <button onclick="go('home')">الرئيسية</button>
+    <button onclick="go('services')">التصوير</button>
+    <button onclick="go('cards')">تصميم البطاقات</button>
+    <button onclick="go('gallerySection')">الأعمال</button>
+    <button onclick="go('booking')">حجز موعد</button>
+    <button onclick="go('chat')">الدردشة</button>
+  </nav>
+</header>
+
+<div class="hero" id="home">
+  <h1>جوج للتصوير وبطاقات المناسبات</h1>
+  <p>
+    لحظات تُعاش مرة وتبقى ذكرى للأبد
+    <br>
+    تصوير مناسبات وتصميم بطاقات بكل حب
+  </p>
+
+  <button onclick="go('cards')">
+    🎨 صممي بطاقتك الآن
+  </button>
+
+  <button onclick="go('booking')">
+    📅 احجزي موعد تصوير
+  </button>
+</div>
+
+<section id="services">
+  <h2>📸 خدمات التصوير</h2>
+
+  <div class="grid">
+    <div class="card">
+      <div class="icon">💍</div>
+      <h3>الملكات والأعراس</h3>
+      <p>توثيق أجمل اللحظات</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎉</div>
+      <h3>المناسبات والحفلات</h3>
+      <p>تصوير تفاصيل مناسبتك</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎂</div>
+      <h3>أعياد الميلاد</h3>
+      <p>ذكريات مليئة بالفرح</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🛍️</div>
+      <h3>تصوير المنتجات</h3>
+      <p>صور أنيقة للمنتجات</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">☕</div>
+      <h3>الكافيهات والمطاعم</h3>
+      <p>تصوير الأطعمة والمشروبات</p>
+    </div>
+  </div>
+</section>
+
+<section id="cards">
+  <h2>💌 صممي بطاقتك بنفسك</h2>
+
+  <div class="grid">
+
+    <div class="panel">
+
+      <label>نوع المناسبة</label>
+      <select id="cardType" onchange="drawCard()">
+        <option>زواج</option>
+        <option>ملكة</option>
+        <option>خطوبة</option>
+        <option>مولود</option>
+        <option>مولودة</option>
+        <option>تخرج</option>
+        <option>عيد ميلاد</option>
+        <option>ذكرى زواج</option>
+        <option>دعوة عشاء</option>
+        <option>تهنئة</option>
+        <option>نجاح</option>
+        <option>افتتاح مشروع</option>
+        <option>استقبال مولود</option>
+        <option>مناسبة خاصة</option>
+      </select>
+
+      <label>الاسم الأول</label>
+      <input id="name1"
+             placeholder="اكتبي الاسم"
+             oninput="drawCard()">
+
+      <label>الاسم الثاني (اختياري)</label>
+      <input id="name2"
+             placeholder="اسم الزوج أو الزوجة"
+             oninput="drawCard()">
+
+      <label>التاريخ</label>
+      <input id="cardDate"
+             placeholder="مثال: 15 / 11 / 2026"
+             oninput="drawCard()">
+
+      <label>عبارة البطاقة</label>
+      <textarea id="cardText"
+       oninput="drawCard()">بكل الحب والفرح نشارككم أجمل لحظاتنا</textarea>
+
+      <label>اختاري لون التصميم</label>
+      <select id="cardColor" onchange="drawCard()">
+        <option value="pink">وردي</option>
+        <option value="gold">ذهبي</option>
+        <option value="cream">كريمي</option>
+        <option value="blue">أزرق</option>
+        <option value="green">أخضر</option>
+        <option value="purple">بنفسجي</option>
+        <option value="black">أسود وذهبي</option>
+      </select>
+
+      <label>شكل البطاقة</label>
+      <select id="cardShape" onchange="drawCard()">
+        <option value="square">مربعة</option>
+        <option value="story">طولية للسناب والستوري</option>
+      </select>
+
+      <div class="actions">
+        <button onclick="drawCard()">
+          👁️ معاينة البطاقة
+        </button>
+
+        <button onclick="downloadCard()">
+          ⬇️ تحميل البطاقة
+        </button>
+      </div>
+
+    </div>
+
+    <div class="panel preview">
+      <h3>معاينة التصميم</h3>
+      <canvas id="cardCanvas"
+              width="1080"
+              height="1080"></canvas>
+      <p>يمكنك تعديل البيانات ومشاهدة النتيجة مباشرة.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="gallerySection">
+  <h2>🖼️ معرض أعمال جوج</h2>
+
+  <div class="panel">
+    <p>
+      يمكنك اختيار صور من جهازك لمعاينتها
+      في المعرض.
+    </p>
+
+    <input type="file"
+           id="photos"
+           accept="image/*"
+           multiple
+           onchange="addPhotos(event)">
+
+    <p class="notice">
+      هذه المعاينة على جهازك فقط.
+      نشر الصور لجميع الزوار يحتاج
+      ربط الموقع بتخزين إلكتروني.
+    </p>
+  </div>
+
+  <div class="gallery" id="gallery"></div>
+</section>
+
+<section id="booking">
+  <h2>📅 حجز موعد تصوير</h2>
+
+  <div class="panel">
+
+    <label>اسم العميلة</label>
+    <input id="clientName"
+           placeholder="الاسم الكامل">
+
+    <label>رقم الجوال</label>
+    <input id="clientPhone"
+           type="tel"
+           placeholder="05xxxxxxxx">
+
+    <label>نوع المناسبة</label>
+    <select id="eventType">
+      <option>ملكة</option>
+      <option>زواج</option>
+      <option>خطوبة</option>
+      <option>تخرج</option>
+      <option>عيد ميلاد</option>
+      <option>تصوير منتجات</option>
+      <option>مناسبة أخرى</option>
+    </select>
+
+    <label>تاريخ المناسبة</label>
+    <input id="eventDate" type="date">
+
+    <label>مكان التصوير</label>
+    <input id="eventPlace"
+           placeholder="المدينة والحي">
+
+    <label>ملاحظات</label>
+    <textarea id="eventNotes"
+              placeholder="تفاصيل المناسبة"></textarea>
+
+    <div class="actions">
+      <button onclick="prepareBooking()">
+        📋 تجهيز طلب الحجز
+      </button>
+    </div>
+
+    <div id="bookingResult"
+         class="hidden">
+
+      <label>تفاصيل الطلب</label>
+      <textarea id="bookingMessage"
+                readonly></textarea>
+
+      <button onclick="copyBooking()">
+        نسخ الطلب
+      </button>
+
+      <p class="notice">
+        انسخي الطلب وأرسليه إلى جوج.
+        إرسال الحجوزات تلقائيًا يحتاج
+        إعداد وسيلة الاستقبال.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section id="chat">
+  <h2>💬 غرفة دردشة جوج</h2>
+
+  <div class="panel">
+
+    <p class="notice">
+      هذه غرفة دردشة تجريبية على جهازك.
+      الرسائل لا تظهر للزائرات الأخريات
+      حتى نربطها بخدمة دردشة مباشرة.
+    </p>
+
+    <label>اسمك في الدردشة</label>
+    <input id="chatName"
+           placeholder="اكتبي اسمك">
+
+    <div class="chat-box"
+         id="chatMessages"></div>
+
+    <label>اكتبي رسالتك</label>
+    <input id="chatInput"
+           placeholder="اكتبي هنا"
+           maxlength="500">
+
+    <div class="actions">
+      <button onclick="sendMessage()">
+        إرسال الرسالة
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <h2 style="color:white">جوج للتصوير والبطاقات</h2>
+  <p>تصوير • بطاقات مناسبات • حجوزات</p>
+  <p>جميع الحقوق محفوظة © 2026</p>
+</footer>
+
+<script>
+"use strict";
+
+function go(id){
+  document.getElementById(id)
+    .scrollIntoView({behavior:"smooth"});
+}
+
+const canvas=document.getElementById("cardCanvas");
+const ctx=canvas.getContext("2d");
+
+function val(id){
+  return document.getElementById(id).value;
+}
+
+const colors={
+  pink:["#fff0f5","#b54d73"],
+  gold:["#fff4dc","#9c712d"],
+  cream:["#fff9ee","#ad8567"],
+  blue:["#e9f3ff","#426c9a"],
+  green:["#eaf6ec","#477b5b"],
+  purple:["#f2eafd","#79519c"],
+  black:["#202020","#d6ad60"]
+};
+
+function roundedRect(x,y,w,h,r){
+  ctx.beginPath();
+  ctx.roundRect(x,y,w,h,r);
+}
+
+function fitFont(text,maxWidth,size){
+  let s=size;
+  while(s>24){
+    ctx.font="bold "+s+"px Tahoma, Arial";
+    if(ctx.measureText(text).width<=maxWidth)break;
+    s-=3;
+  }
+  return s;
+}
+
+function wrapLines(text,maxWidth,fontSize){
+  ctx.font=fontSize+"px Tahoma, Arial";
+  const words=text.split(/\s+/);
+  const lines=[];
+  let line="";
+
+  words.forEach(word=>{
+    const test=line?line+" "+word:word;
+
+    if(ctx.measureText(test).width>maxWidth && line){
+      lines.push(line);
+      line=word;
+    }else{
+      line=test;
+    }
+  });
+
+  if(line)lines.push(line);
+  return lines;
+}
+
+function drawCard(){
+  const shape=val("cardShape");
+
+  canvas.width=1080;
+  canvas.height=shape==="story"?1920:1080;
+
+  const w=canvas.width;
+  const h=canvas.height;
+
+  const palette=colors[val("cardColor")];
+  const bg=palette[0];
+  const ink=palette[1];
+
+  ctx.fillStyle=bg;
+  ctx.fillRect(0,0,w,h);
+
+  ctx.strokeStyle=ink;
+  ctx.lineWidth=8;
+  ctx.strokeRect(38,38,w-76,h-76);
+
+  ctx.lineWidth=2;
+  ctx.strokeRect(55,55,w-110,h-110);
+
+  ctx.textAlign="center";
+  ctx.textBaseline="middle";
+
+  const middle=h/2;
+
+  ctx.fillStyle=ink;
+
+  ctx.font="80px serif";
+  ctx.fillText("❀",w/2,middle-340);
+
+  const type=val("cardType");
+
+  ctx.font="bold 57px Tahoma, Arial";
+  ctx.fillText(type,w/2,middle-230);
+
+  let names=val("name1").trim();
+  const second=val("name2").trim();
+
+  if(second){
+    names+=(names?" ♥ ":"")+second;
+  }
+
+  if(!names)names="اسم المناسبة";
+
+  const fontSize=fitFont(names,w-160,75);
+
+  ctx.font="bold "+fontSize+"px Tahoma, Arial";
+  ctx.fillText(names,w/2,middle-90);
+
+  const date=val("cardDate").trim();
+
+  if(date){
+    ctx.font="37px Tahoma, Arial";
+    ctx.fillText(date,w/2,middle+25);
+  }
+
+  const text=val("cardText").trim();
+  const lines=wrapLines(text,w-180,38);
+
+  ctx.font="38px Tahoma, Arial";
+
+  lines.slice(0,5).forEach((line,i)=>{
+    ctx.fillText(line,w/2,middle+130+i*65);
+  });
+
+  ctx.font="65px serif";
+  ctx.fillText("❀",w/2,middle+330);
+
+  ctx.font="28px Tahoma, Arial";
+  ctx.fillText(
+    "صُممت بكل حب",
+    w/2,
+    h-105
+  );
+}
+
+function downloadCard(){
+  drawCard();
+
+  try{
+    const a=document.createElement("a");
+    a.download="بطاقة-جوج.png";
+    a.href=canvas.toDataURL("image/png");
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }catch(e){
+    alert("تعذر تحميل الصورة. جرّبي فتح الموقع في سفاري.");
+  }
+}
+
+function addPhotos(event){
+  const files=Array.from(event.target.files);
+  const gallery=document.getElementById("gallery");
+
+  files.forEach(file=>{
+    if(!file.type.startsWith("image/"))return;
+
+    const url=URL.createObjectURL(file);
+    const img=document.createElement("img");
+
+    img.src=url;
+    img.alt="صورة من أعمال جوج";
+
+    gallery.appendChild(img);
+  });
+}
+
+function prepareBooking(){
+  const name=val("clientName").trim();
+  const phone=val("clientPhone").trim();
+  const date=val("eventDate");
+
+  if(!name||!phone||!date){
+    alert("يرجى إدخال الاسم ورقم الجوال وتاريخ المناسبة");
+    return;
+  }
+
+  const msg=
+    "طلب حجز تصوير - جوج\n"+
+    "الاسم: "+name+"\n"+
+    "الجوال: "+phone+"\n"+
+    "المناسبة: "+val("eventType")+"\n"+
+    "التاريخ: "+date+"\n"+
+    "المكان: "+val("eventPlace")+"\n"+
+    "الملاحظات: "+val("eventNotes");
+
+  document.getElementById("bookingMessage").value=msg;
+
+  document.getElementById("bookingResult")
+    .classList.remove("hidden");
+}
+
+async function copyBooking(){
+  const text=val("bookingMessage");
+
+  try{
+    await navigator.clipboard.writeText(text);
+    alert("تم نسخ طلب الحجز");
+  }catch(e){
+    const box=document.getElementById("bookingMessage");
+    box.focus();
+    box.select();
+    alert("حددي النص وانسخيه من القائمة");
+  }
+}
+
+const CHAT_KEY="joj_demo_chat_v1";
+
+function getMessages(){
+  try{
+    return JSON.parse(localStorage.getItem(CHAT_KEY)||"[]");
+  }catch(e){
+    return [];
+  }
+}
+
+function renderMessages(){
+  const box=document.getElementById("chatMessages");
+  box.replaceChildren();
+
+  getMessages().forEach(item=>{
+    const div=document.createElement("div");
+    div.className="message";
+
+    const strong=document.createElement("strong");
+    strong.textContent=item.name+" : ";
+
+    const span=document.createElement("span");
+    span.textContent=item.text;
+
+    div.append(strong,span);
+    box.appendChild(div);
+  });
+
+  box.scrollTop=box.scrollHeight;
+}
+
+function sendMessage(){
+  const name=val("chatName").trim();
+  const text=val("chatInput").trim();
+
+  if(!name||!text){
+    alert("اكتبي اسمك ورسالتك");
+    return;
+  }
+
+  const messages=getMessages();
+
+  messages.push({
+    name:name.slice(0,50),
+    text:text.slice(0,500)
+  });
+
+  try{
+    localStorage.setItem(
+      CHAT_KEY,
+      JSON.stringify(messages.slice(-50))
+    );
+  }catch(e){
+    alert("تعذر حفظ الرسالة على هذا الجهاز");
+    return;
+  }
+
+  document.getElementById("chatInput").value="";
+  renderMessages();
+}
+
+drawCard();
+renderMessages();
+</script>
+
+</body>
+</html>
